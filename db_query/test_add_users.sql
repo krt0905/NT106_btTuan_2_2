@@ -1,0 +1,22 @@
+﻿INSERT INTO Users (TenDangNhap, MatKhauBam, Salt, HoTen, Email)
+VALUES
+(N'nguyenvana', N'hash001', N'salt001', N'Nguyễn Văn An', N'vana@gmail.com'),
+(N'tranthib',   N'hash002', N'salt002', N'Trần Thị Bình', N'thib@gmail.com'),
+(N'levanc',     N'hash003', N'salt003', N'Lê Văn Cường', N'vanc@gmail.com'),
+(N'phamthid',   N'hash004', N'salt004', N'Phạm Thị Dung', N'thid@gmail.com'),
+(N'hoangvane',  N'hash005', N'salt005', N'Hoàng Văn Em', N'vane@gmail.com'),
+(N'dangthif',   N'hash006', N'salt006', N'Đặng Thị Phương', N'thif@gmail.com'),
+(N'buiducg',    N'hash007', N'salt007', N'Bùi Đức Giang', N'ducg@gmail.com'),
+(N'vothih',     N'hash008', N'salt008', N'Võ Thị Hạnh', N'thih@gmail.com'),
+(N'doquangi',   N'hash009', N'salt009', N'Đỗ Quang Huy', N'quangi@gmail.com'),
+(N'ngothij',    N'hash010', N'salt010', N'Ngô Thị Lan', N'thij@gmail.com'),
+(N'dinhvank',   N'hash011', N'salt011', N'Đinh Văn Khang', N'vank@gmail.com'),
+(N'luuthil',    N'hash012', N'salt012', N'Lưu Thị Linh', N'thil@gmail.com'),
+(N'maivann',    N'hash013', N'salt013', N'Mai Văn Nam', N'vann@gmail.com'),
+(N'trinhthio',  N'hash014', N'salt014', N'Trịnh Thị Oanh', N'thio@gmail.com'),
+(N'phanvamp',   N'hash015', N'salt015', N'Phan Văn Phúc', N'vamp@gmail.com'),
+(N'huynhthiq',  N'hash016', N'salt016', N'Huỳnh Thị Quỳnh', N'thiq@gmail.com'),
+(N'lyvanr',     N'hash017', N'salt017', N'Lý Văn Sơn', N'vanr@gmail.com'),
+(N'taothis',    N'hash018', N'salt018', N'Tào Thị Sen', N'this@gmail.com'),
+(N'caovant',    N'hash019', N'salt019', N'Cao Văn Thành', N'vant@gmail.com'),
+(N'phanthiu',   N'hash020', N'salt020', N'Phan Thị Uyên', N'thiu@gmail.com');
