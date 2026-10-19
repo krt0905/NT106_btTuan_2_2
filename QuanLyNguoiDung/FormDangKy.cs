@@ -76,8 +76,14 @@ namespace QuanLyNguoiDung
         {// 1. Kiểm tra dữ liệu nhập tại Form[cite: 26]
             if (string.IsNullOrWhiteSpace(txtTenDangNhap.Text))
             {
-                lblLoiHoTen.Text = "Tên đăng nhập không được để trống.";
+                lblLoiTenDangNhap.Text = "Tên đăng nhập không được để trống.";
                 txtTenDangNhap.Focus();
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtHoTen.Text))
+            {
+                lblLoiHoTen.Text = "Họ tên không được để trống";
+                txtHoTen.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtMatKhau.Text) || txtMatKhau.Text != txtXacNhanMatKhau.Text)
@@ -87,6 +93,7 @@ namespace QuanLyNguoiDung
                 return;
             }
 
+            lblLoiTenDangNhap.Text = "";
             lblLoiHoTen.Text = "";
             lblLoiMatKhau.Text = "";
 
@@ -133,6 +140,11 @@ namespace QuanLyNguoiDung
         private void btnHuy_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void lblLoiTenDangNhap_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

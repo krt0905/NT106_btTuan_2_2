@@ -13,11 +13,6 @@ namespace QuanLyNguoiDung
             GoiYTextBox.Dat(txtTenDangNhap, "nguyenvana");
         }
 
-        public void XoaLoi()
-        {
-            lblLoi.Text = string.Empty;
-        }
-
         private async void btnDangNhap_Click_1(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtTenDangNhap.Text) || string.IsNullOrWhiteSpace(txtMatKhau.Text))
@@ -92,7 +87,7 @@ namespace QuanLyNguoiDung
                 DialogResult ketQua = frmDangKy.ShowDialog();
                 Show();
 
-                XoaLoi();
+                lblLoi.Text = string.Empty;
                 if (ketQua == DialogResult.OK)
                 {
                     txtTenDangNhap.Text = frmDangKy.TenDangNhapVuaTao;
@@ -108,12 +103,12 @@ namespace QuanLyNguoiDung
 
         private void txtTenDangNhap_TextChanged(object sender, EventArgs e)
         {
-            XoaLoi();
+
         }
 
         private void txtMatKhau_TextChanged(object sender, EventArgs e)
         {
-            XoaLoi();
+
         }
     }
 }
