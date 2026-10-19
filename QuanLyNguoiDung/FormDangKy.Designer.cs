@@ -93,6 +93,7 @@ namespace QuanLyNguoiDung
             this.lblLoiTenDangNhap.Name = "lblLoiTenDangNhap";
             this.lblLoiTenDangNhap.Size = new System.Drawing.Size(246, 18);
             this.lblLoiTenDangNhap.TabIndex = 2;
+            this.lblLoiTenDangNhap.Click += new System.EventHandler(this.lblLoiTenDangNhap_Click);
             // 
             // lblHoTen
             // 

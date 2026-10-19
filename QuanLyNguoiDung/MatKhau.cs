@@ -3,9 +3,8 @@ using System.Security.Cryptography;
 
 public static class MatKhau
 {
-    private const int VONG_LAP = 600000; // 600,000 iterations required[cite: 29]
+    private const int VONG_LAP = 600000; 
 
-    // Called during Registration[cite: 29]
     public static (string Salt, string Bam) Tao(string matKhau)
     {
         byte[] salt = new byte[16];
@@ -21,7 +20,6 @@ public static class MatKhau
         }
     }
 
-    // Called during Login[cite: 29]
     public static bool KiemTra(string matKhau, string saltLuu, string bamLuu)
     {
         byte[] salt = Convert.FromBase64String(saltLuu);
@@ -34,7 +32,6 @@ public static class MatKhau
         }
     }
 
-    // Custom Constant-Time byte comparison for .NET Framework 4.7.2 to prevent timing attacks[cite: 29]
     private static bool SoSanhThoiGianCoDinh(byte[] a, byte[] b)
     {
         if (a == null || b == null || a.Length != b.Length)

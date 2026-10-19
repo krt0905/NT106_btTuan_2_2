@@ -13,11 +13,6 @@ namespace QuanLyNguoiDung
             GoiYTextBox.Dat(txtTenDangNhap, "nguyenvana");
         }
 
-        public void XoaLoi()
-        {
-            lblLoi.Text = string.Empty;
-        }
-
         private async void btnDangNhap_Click_1(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtTenDangNhap.Text) || string.IsNullOrWhiteSpace(txtMatKhau.Text))
@@ -35,10 +30,8 @@ namespace QuanLyNguoiDung
             {
                 var db = new TruyCapDuLieu();
 
-                // 1. Fetch login credentials for password verification
                 var userRecord = await db.LayThongTinDangNhapAsync(txtTenDangNhap.Text);
 
-                // Security check: Same error message for invalid user or wrong password
                 if (userRecord == null || !MatKhau.KiemTra(txtMatKhau.Text, userRecord.Salt, userRecord.MatKhauBam))
                 {
                     lblLoi.Text = "Tên đăng nhập hoặc mật khẩu không đúng";
@@ -47,10 +40,8 @@ namespace QuanLyNguoiDung
                     return;
                 }
 
-                // 2. Update last login timestamp in database
                 await db.CapNhatLanDangNhapCuoiAsync(userRecord.UserId);
 
-                // 3. Fetch form display data (contains Email, NgayTao, LanDangNhapCuoi)
                 var formInfo = await db.LayThongTinFormChinhAsync(txtTenDangNhap.Text);
 
                 if (formInfo != null)
@@ -74,9 +65,8 @@ namespace QuanLyNguoiDung
             }
             finally
             {
-                lblLoi.Text = "Tên đăng nhập hoặc mật khẩu không đúng";
-                txtMatKhau.Clear(); 
-                txtMatKhau.Focus(); 
+                btnDangNhap.Enabled = true;
+                btnDangNhap.Text = "Đăng nhập";
             }
         }
 
@@ -93,7 +83,7 @@ namespace QuanLyNguoiDung
                 DialogResult ketQua = frmDangKy.ShowDialog();
                 Show();
 
-                XoaLoi();
+                lblLoi.Text = string.Empty;
                 if (ketQua == DialogResult.OK)
                 {
                     txtTenDangNhap.Text = frmDangKy.TenDangNhapVuaTao;
@@ -109,12 +99,12 @@ namespace QuanLyNguoiDung
 
         private void txtTenDangNhap_TextChanged(object sender, EventArgs e)
         {
-            XoaLoi();
+
         }
 
         private void txtMatKhau_TextChanged(object sender, EventArgs e)
         {
-            XoaLoi();
+
         }
     }
 }

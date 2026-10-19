@@ -73,11 +73,17 @@ namespace QuanLyNguoiDung
         }
 
         private async void btnDangKy_Click_1(object sender, EventArgs e)
-        {// 1. Kiểm tra dữ liệu nhập tại Form[cite: 26]
+        {
             if (string.IsNullOrWhiteSpace(txtTenDangNhap.Text))
             {
-                lblLoiHoTen.Text = "Tên đăng nhập không được để trống.";
+                lblLoiTenDangNhap.Text = "Tên đăng nhập không được để trống.";
                 txtTenDangNhap.Focus();
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtHoTen.Text))
+            {
+                lblLoiHoTen.Text = "Họ tên không được để trống";
+                txtHoTen.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtMatKhau.Text) || txtMatKhau.Text != txtXacNhanMatKhau.Text)
@@ -87,10 +93,10 @@ namespace QuanLyNguoiDung
                 return;
             }
 
+            lblLoiTenDangNhap.Text = "";
             lblLoiHoTen.Text = "";
             lblLoiMatKhau.Text = "";
 
-            // 2. Khóa nút bấm tránh người dùng spam click
             btnDangKy.Enabled = false;
             btnDangKy.Text = "Đang xử lý...";
 
@@ -98,26 +104,22 @@ namespace QuanLyNguoiDung
             {
                 var db = new TruyCapDuLieu();
 
-                // 3. Kiểm tra tên đăng nhập đã tồn tại chưa[cite: 26]
                 bool tonTai = await db.KiemTraTenDangNhapTonTaiAsync(txtTenDangNhap.Text);
                 if (tonTai)
                 {
-                    lblLoiHoTen.Text = "Tên này đã có người dùng"; // Nội dung yêu cầu đúng chuẩn đề bài[cite: 26]
+                    lblLoiTenDangNhap.Text = "Tên này đã có người dùng"; 
                     return;
                 }
 
-                // 4. Băm mật khẩu ra Chuỗi Băm và Salt[cite: 28, 29]
                 var (salt, bam) = MatKhau.Tao(txtMatKhau.Text);
 
-                // Nếu trên Form Đăng ký có ô txtHoTen thì dùng txtHoTen.Text, không có thì dùng mặc định
                 string hoTen = "Người dùng mới";
                 string email = string.IsNullOrWhiteSpace(txtEmail.Text) ? null : txtEmail.Text;
 
-                // 5. Thêm tài khoản vào cơ sở dữ liệu[cite: 26, 28]
                 await db.ThemTaiKhoanAsync(txtTenDangNhap.Text, bam, salt, hoTen, email);
 
                 MessageBox.Show("Đăng ký thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close(); // Đóng form Đăng ký để quay về Form Đăng nhập[cite: 26]
+                this.Close(); 
             }
             catch (Exception)
             {
@@ -133,6 +135,11 @@ namespace QuanLyNguoiDung
         private void btnHuy_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void lblLoiTenDangNhap_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
