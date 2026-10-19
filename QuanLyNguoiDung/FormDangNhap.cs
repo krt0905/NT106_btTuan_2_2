@@ -74,8 +74,9 @@ namespace QuanLyNguoiDung
             }
             finally
             {
-                btnDangNhap.Enabled = true;
-                btnDangNhap.Text = "Đăng nhập";
+                lblLoi.Text = "Tên đăng nhập hoặc mật khẩu không đúng";
+                txtMatKhau.Clear(); 
+                txtMatKhau.Focus(); 
             }
         }
 
